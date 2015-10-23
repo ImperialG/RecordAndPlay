@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ToggleButton;
 
 import java.io.File;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ToggleButton playButton;
     private ToggleButton recordButton;
-
+    private Chronometer myChronometer;
 
     private boolean isRecording = false;
 
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         }
         recordButton = (ToggleButton) findViewById(R.id.recordButton);
         playButton = (ToggleButton) findViewById(R.id.playButton);
+        myChronometer = (Chronometer)findViewById(R.id.chronometer);
 
         if (!hasMicrophone())
         {
@@ -88,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
     public void onRecordClick(View view){
         ToggleButton toggleButton = (ToggleButton) view;
         if (toggleButton.isChecked()) {
+            myChronometer.setBase(SystemClock.elapsedRealtime());
             startRecording();
+            myChronometer.start();
         } else {
             stopRecording();
         }
@@ -97,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
     public void onPlayClick(View view){
         ToggleButton toggleButton = (ToggleButton) view;
         if (toggleButton.isChecked()) {
+            myChronometer.setBase(SystemClock.elapsedRealtime());
             startPlaying();
+            myChronometer.start();
         } else {
             stopPlaying();
         }
@@ -143,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopPlaying() {
+        myChronometer.stop();
         mediaPlayer.stop();
         mediaPlayer.release();
         mediaPlayer = null;
@@ -150,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopRecording() {
+        myChronometer.stop();
         if(isRecording) {
             mediaRecorder.stop();
             mediaRecorder.release();
