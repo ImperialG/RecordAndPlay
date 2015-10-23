@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private final int source = MediaRecorder.AudioSource.MIC;
     private final int output_format = MediaRecorder.OutputFormat.THREE_GPP;
     private final int encoder = MediaRecorder.AudioEncoder.AAC;
+    private File appDir;
     private final String audioFilePath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                                            +"/myaudio.3gpp";;
+                                            +"/ARP/myaudio.wav";;
 
     private ToggleButton playButton;
     private ToggleButton recordButton;
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ARP");
+        if(!appDir.exists()){
+            appDir.mkdirs();
+        }
         recordButton = (ToggleButton) findViewById(R.id.recordButton);
         playButton = (ToggleButton) findViewById(R.id.playButton);
 
@@ -47,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             playButton.setEnabled(false);
         }
 
-        Log.d(TAG,audioFilePath);
+        Log.d(TAG, audioFilePath);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,10 +112,8 @@ public class MainActivity extends AppCompatActivity {
                     new MediaPlayer.OnCompletionListener() {
                         @Override
                         public void onCompletion(MediaPlayer mp) {
-                            mp.stop();
-                            mp.release();
-                            mediaPlayer = null;
                             playButton.setChecked(false);
+                            stopPlaying();
                         /*if audio finishes before user presses on stop
                         * then automatically release resources*/
                         }
@@ -132,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
             mediaRecorder.setOutputFile(audioFilePath);
             mediaRecorder.setAudioEncoder(encoder);
             mediaRecorder.prepare();
+            mediaRecorder.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mediaRecorder.start();
     }
 
     private void stopPlaying() {
