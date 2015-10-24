@@ -22,25 +22,19 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "DEBUG";
-    private MediaRecorder mediaRecorder;
-    private MediaPlayer mediaPlayer;
     private final int source = MediaRecorder.AudioSource.MIC;
-    private final int output_format = MediaRecorder.OutputFormat.THREE_GPP;
-    private final int encoder = MediaRecorder.AudioEncoder.AAC;
     private File appDir;
-    private final String audioFilePath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                                            +"/ARP/myaudio.wav";;
-
+    private final String audioFilePath = "myaudio.wav";
+    private Android_Record_Play arp;
     private ToggleButton playButton;
     private ToggleButton recordButton;
     private Chronometer myChronometer;
 
-    private boolean isRecording = false;
-
     @Override
     protected void onStart() {
         super.onStart();
-        appDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/ARP");
+        String appPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ARP/";
+        appDir = new File(appPath);
         if(!appDir.exists()){
             appDir.mkdirs();
         }
@@ -56,7 +50,18 @@ public class MainActivity extends AppCompatActivity {
             playButton.setEnabled(false);
         }
 
-        Log.d(TAG, audioFilePath);
+        arp = new Android_Record_Play(source,appPath,audioFilePath);
+        arp.setOnPlayerCompletion(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                playButton.setChecked(false);
+                stopPlaying();
+                /*
+                 * if audio finishes before user presses on stop
+                 * then automatically release resources
+                 */
+            }
+        });
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,60 +117,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void startPlaying() {
         recordButton.setEnabled(false);
-        try{
-            mediaPlayer = new MediaPlayer();
-            mediaPlayer.setDataSource(audioFilePath);
-            mediaPlayer.setOnCompletionListener(
-                    new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            playButton.setChecked(false);
-                            stopPlaying();
-                        /*if audio finishes before user presses on stop
-                        * then automatically release resources*/
-                        }
-                    });
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        arp.startPlaying();
     }
 
     private void startRecording(){
-        isRecording = true;
         playButton.setEnabled(false);
-
-        try {
-            mediaRecorder = new MediaRecorder();
-            mediaRecorder.setAudioSource(source);
-            mediaRecorder.setOutputFormat(output_format);
-            mediaRecorder.setOutputFile(audioFilePath);
-            mediaRecorder.setAudioEncoder(encoder);
-            mediaRecorder.prepare();
-            mediaRecorder.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        arp.startRecording();
     }
 
     private void stopPlaying() {
         myChronometer.stop();
-        mediaPlayer.stop();
-        mediaPlayer.release();
-        mediaPlayer = null;
+        arp.stopPlaying();
         recordButton.setEnabled(true);
     }
 
     private void stopRecording() {
         myChronometer.stop();
-        if(isRecording) {
-            mediaRecorder.stop();
-            mediaRecorder.release();
-            mediaRecorder = null;
-            isRecording = false;
-            playButton.setEnabled(true);
-        }
+        arp.stopRecording();
+        playButton.setEnabled(true);
     }
 
     private boolean hasMicrophone() {

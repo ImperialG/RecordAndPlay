@@ -18,9 +18,8 @@
         android:checked="false"
         android:onClick="onRecordClick"
         android:layout_above="@+id/playButton"
-        android:layout_alignLeft="@+id/playButton"
-        android:layout_alignStart="@+id/playButton"
-        android:layout_marginBottom="28dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ToggleButton
         android:layout_width="fill_parent"
@@ -30,20 +29,21 @@
         android:id="@+id/playButton"
         android:checked="false"
         android:onClick="onPlayClick"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="72dp" />
 
     <Chronometer
         android:id="@+id/chronometer"
-        android:layout_gravity="center_horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
         android:format="%s"
         android:text="@string/timer"
         android:textSize="40sp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
 </RelativeLayout>
