@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by sinduran on 23/10/15.
  */
-public class Android_Record_Play {
+public class AndroidRecordPlay {
 
 
     private MediaPlayer mediaPlayer;
@@ -36,7 +36,7 @@ public class Android_Record_Play {
     private Thread recordingThread;
     private boolean isRecording = false;
 
-    public Android_Record_Play(int source,String parentDir,String wavFile){
+    public AndroidRecordPlay(int source, String parentDir, String wavFile){
         this.source = source;
         this.wavFile = wavFile;
         this.parentDir = parentDir;

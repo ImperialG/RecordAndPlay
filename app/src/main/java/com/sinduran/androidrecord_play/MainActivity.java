@@ -8,16 +8,13 @@ import android.os.Environment;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ToggleButton;
 
 import java.io.File;
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private final int source = MediaRecorder.AudioSource.MIC;
     private File appDir;
     private final String audioFilePath = "myaudio.wav";
-    private Android_Record_Play arp;
+    private AndroidRecordPlay arp;
     private ToggleButton playButton;
     private ToggleButton recordButton;
     private Chronometer myChronometer;
@@ -50,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             playButton.setEnabled(false);
         }
 
-        arp = new Android_Record_Play(source,appPath,audioFilePath);
+        arp = new AndroidRecordPlay(source,appPath,audioFilePath);
         arp.setOnPlayerCompletion(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
