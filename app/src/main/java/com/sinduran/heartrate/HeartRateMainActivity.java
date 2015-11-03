@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.sinduran.androidrecord.HistoryActivity;
 
+import java.util.Random;
+
 /**
  * Created by rick on 02/11/2015.
  */
@@ -35,6 +37,7 @@ public class HeartRateMainActivity extends Activity {
 
     public class UpdateHRTask extends AsyncTask<String, Integer, Long> {
 
+        private double heartrate = 60;
         @Override
         protected void onPreExecute() {
             heartRateTV.setText("Calculating..");
@@ -48,6 +51,7 @@ public class HeartRateMainActivity extends Activity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            this.heartrate = genRandom(40,120);
             return Long.valueOf(1);
         }
 
@@ -58,7 +62,14 @@ public class HeartRateMainActivity extends Activity {
 
         @Override
         protected void onPostExecute(Long aLong) {
-            heartRateTV.setText("121 bpm");
+            double rate = Math.random();
+            heartRateTV.setText(heartrate + " bpm");
+
+        }
+
+        private double genRandom(double min, double max) {
+            Random r = new Random();
+            return (r.nextInt((int)((max-min)*10+1))+min*10) / 10.0;
         }
     }
 }
