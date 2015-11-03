@@ -552,7 +552,9 @@ int drawable abc_textfield_search_default_mtrl_alpha 0x7f020043
 int drawable abc_textfield_search_material 0x7f020044
 int drawable design_fab_background 0x7f020045
 int drawable design_snackbar_background 0x7f020046
-int drawable notification_template_icon_bg 0x7f020047
+int drawable ic_hearing_black_48dp 0x7f020047
+int drawable ic_history_black_48dp 0x7f020048
+int drawable notification_template_icon_bg 0x7f020049
 int id action0 0x7f0c0077
 int id action_bar 0x7f0c005a
 int id action_bar_activity_content 0x7f0c0000
@@ -666,7 +668,7 @@ int id src_atop 0x7f0c0028
 int id src_in 0x7f0c0029
 int id src_over 0x7f0c002a
 int id start 0x7f0c0024
-int id startRecordBtn 0x7f0c006b
+int id startRecordBtn 0x7f0c006c
 int id status_bar_latest_event_content 0x7f0c0079
 int id submit_area 0x7f0c0065
 int id tabMode 0x7f0c000d
@@ -681,7 +683,7 @@ int id top 0x7f0c0025
 int id topPanel 0x7f0c0047
 int id up 0x7f0c0009
 int id useLogo 0x7f0c0014
-int id viewHistoryBtn 0x7f0c006c
+int id viewHistoryBtn 0x7f0c006b
 int id view_offset_helper 0x7f0c000a
 int id withText 0x7f0c0036
 int id wrap_content 0x7f0c0039
