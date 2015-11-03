@@ -19,7 +19,7 @@
                 android:id="@+id/startRecordBtn"
                 android:layout_gravity="left|center_vertical"
                 android:onClick="calculateHeartRate"
-                android:src="@drawable/ic_hearing_black_48dp"/>
+                android:src="@drawable/ic_mic_black_48dp"/>
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
