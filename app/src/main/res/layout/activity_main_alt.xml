@@ -3,29 +3,43 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="96dp"
-        android:text="Click start"
-        android:id="@+id/heartRateTV"
-        android:layout_gravity="center_horizontal"
-        android:textSize="48sp"
-        android:textStyle="bold" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Recording"
-        android:id="@+id/startRecordBtn"
-        android:layout_gravity="center_horizontal"
-        android:onClick="calculateHeartRate" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="96dp"
+            android:text="00 BPM"
+            android:id="@+id/heartRateTV"
+            android:layout_gravity="center_horizontal|top"
+            android:textSize="48sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View History"
-        android:id="@+id/viewHistoryBtn"
-        android:layout_gravity="center_horizontal"
-        android:onClick="goToHistory" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="192dp"
+            android:layout_gravity="center">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View History"
+                android:id="@+id/viewHistoryBtn"
+                android:layout_gravity="right|center_vertical"
+                android:onClick="goToHistory"
+                android:src="@drawable/ic_history_black_48dp"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Recording"
+                android:id="@+id/startRecordBtn"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="calculateHeartRate"
+                android:src="@drawable/ic_hearing_black_48dp"/>
+        </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
