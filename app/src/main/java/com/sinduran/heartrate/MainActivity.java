@@ -1,4 +1,4 @@
-package com.sinduran.androidrecord_play;
+package com.sinduran.heartrate;
 
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;

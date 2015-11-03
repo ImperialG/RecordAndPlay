@@ -1,4 +1,4 @@
-package com.sinduran.androidrecord_play;
+package com.sinduran.heartrate;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

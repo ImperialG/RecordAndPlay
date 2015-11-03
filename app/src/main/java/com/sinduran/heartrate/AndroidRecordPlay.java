@@ -1,9 +1,8 @@
-package com.sinduran.androidrecord_play;
+package com.sinduran.heartrate;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.util.Log;
 
 import java.io.File;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidRecord_Play</string>
+    <string name="app_name">AndroidRecordPlay</string>
     <string name="action_settings">Settings</string>
     <string name="button_play">Play</string>
     <string name="button_record">Record</string>

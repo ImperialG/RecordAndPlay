@@ -9,7 +9,7 @@
         android:text="78"
         android:id="@+id/heartRateTV"
         android:layout_gravity="center_horizontal"
-        android:textSize="78dp"
+        android:textSize="78sp"
         android:textStyle="bold" />
 
     <Button
@@ -18,7 +18,10 @@
         android:text="View History"
         android:id="@+id/viewHistoryBtn"
         android:layout_gravity="center_horizontal" />
-
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/hrChart"
+        android:layout_width="match_parent"
+        android:layout_height="167dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
