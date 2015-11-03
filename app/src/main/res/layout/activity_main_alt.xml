@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="192dp"
+            android:layout_gravity="center">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Recording"
+                android:id="@+id/startRecordBtn"
+                android:layout_gravity="left|center_vertical"
+                android:onClick="calculateHeartRate"
+                android:src="@drawable/ic_mic_black_48dp"/>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View History"
+                android:id="@+id/viewHistoryBtn"
+                android:layout_gravity="right|center_vertical"
+                android:onClick="goToHistory"
+                android:src="@drawable/ic_history_black_48dp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="96dp"
+            android:text="00 BPM"
+            android:id="@+id/heartRateTV"
+            android:layout_gravity="center_vertical|center_horizontal|top"
+
+            android:textSize="58sp"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+    </FrameLayout>
+
+</LinearLayout>
