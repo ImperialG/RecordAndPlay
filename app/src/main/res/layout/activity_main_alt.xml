@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="96dp"
-        android:text="Calculating..."
+        android:text="Click start"
         android:id="@+id/heartRateTV"
         android:layout_gravity="center_horizontal"
         android:textSize="48sp"
@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:text="Start Recording"
         android:id="@+id/startRecordBtn"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="calculateHeartRate" />
 
     <Button
         android:layout_width="wrap_content"

@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jar="/Users/rick/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v2.1.5/34b9f39e5343d39e205fb7617e734601dc4868e7/MPAndroidChart-v2.1.5.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-2ae5512909eb5750561a904fdb0924156c7552cd.jar" />
-    </item>
-    <item
-        jar="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/classes-b20ff24e2172d39612fc04d458e6b2b2b5b59065.jar" />
-    </item>
-    <item
-        jar="/home/sinduran/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-fa579a7a44e187e6ea9ec6688bc058717b2b9974.jar" />
-    </item>
-    <item
-        jar="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/classes-0dd9d8b12a97be09ff547fc6638cd95635fb03a5.jar" />
-    </item>
-    <item
-        jar="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/classes-72358b25d4d5357be554d1c5737b3074e91ced73.jar" />
-    </item>
-    <item
-        jar="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="/home/sinduran/Third Year/AndroidRecord_Play/app/build/intermediates/pre-dexed/debug/classes-6e16c6c19197e361f26304814e3813e3339633ec.jar" />
+        sha1="34b9f39e5343d39e205fb7617e734601dc4868e7">
+        <dex dex="/Users/rick/Dev/RecordAndPlay/app/build/intermediates/pre-dexed/debug/MPAndroidChart-v2.1.5-4d8093622e211c21ad796097460ee0dcbee209c4.jar" />
     </item>
 
 </items>
