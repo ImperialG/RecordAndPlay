@@ -7,7 +7,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <ToggleButton
         android:layout_width="fill_parent"
@@ -18,9 +19,8 @@
         android:checked="false"
         android:onClick="onRecordClick"
         android:layout_above="@+id/playButton"
-        android:layout_alignLeft="@+id/playButton"
-        android:layout_alignStart="@+id/playButton"
-        android:layout_marginBottom="28dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ToggleButton
         android:layout_width="fill_parent"
@@ -30,21 +30,22 @@
         android:id="@+id/playButton"
         android:checked="false"
         android:onClick="onPlayClick"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="72dp" />
 
     <Chronometer
         android:id="@+id/chronometer"
-        android:layout_gravity="center_horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
         android:format="%s"
         android:text="@string/timer"
         android:textSize="40sp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
 </RelativeLayout>
-<!-- From: file:/home/sinduran/Third%20Year/AndroidRecord_Play/app/src/main/res/layout/content_main.xml -->
+<!-- From: file:/home/vishaal/Third_Year_Group_Project/RecordAndPlay/app/src/main/res/layout/content_main.xml -->
