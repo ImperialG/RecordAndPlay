@@ -37,7 +37,7 @@ public class HeartRateMainActivity extends Activity {
 
     public class UpdateHRTask extends AsyncTask<String, Integer, Long> {
 
-        private double heartrate = 60;
+        private int heartrate = 60;
         @Override
         protected void onPreExecute() {
             heartRateTV.setText("Calculating..");
@@ -51,7 +51,7 @@ public class HeartRateMainActivity extends Activity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.heartrate = genRandom(40,120);
+            this.heartrate = (int) genRandom(40,120);
             return Long.valueOf(1);
         }
 
