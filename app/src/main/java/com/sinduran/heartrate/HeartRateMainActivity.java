@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,18 +12,17 @@ import com.sinduran.androidrecord.HistoryActivity;
 
 import java.util.Random;
 
-/**
- * Created by rick on 02/11/2015.
- */
 public class HeartRateMainActivity extends Activity {
     private static final String DEBUG = "DEBUG";
     private TextView heartRateTV;
+    private HeartRateDatabaseAdapter heartRateDatabaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_alt);
         heartRateTV = (TextView) findViewById(R.id.heartRateTV);
+        heartRateDatabaseAdapter = new HeartRateDatabaseAdapter(this);
     }
 
     public void goToHistory(View view) {
@@ -35,9 +35,10 @@ public class HeartRateMainActivity extends Activity {
         new UpdateHRTask().execute();
     }
 
-    public class UpdateHRTask extends AsyncTask<String, Integer, Long> {
+    private class UpdateHRTask extends AsyncTask<String, Integer, Long> {
 
-        private double heartrate = 60;
+        HeartRate heartrate;
+
         @Override
         protected void onPreExecute() {
             heartRateTV.setText("Calculating..");
@@ -51,7 +52,15 @@ public class HeartRateMainActivity extends Activity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.heartrate = genRandom(40,120);
+            this.heartrate = new HeartRate(genRandomHeartRate());
+            long id = heartRateDatabaseAdapter.insertData(heartrate.getHeartRate(),heartrate.getTime());
+
+            if (id < 0){
+                Log.e("HRDatabase", "Unsuccessful in insertion");
+            } else {
+                Log.d("HRDatabase", "Successfully Inserted A Row");
+            }
+
             return Long.valueOf(1);
         }
 
@@ -62,14 +71,13 @@ public class HeartRateMainActivity extends Activity {
 
         @Override
         protected void onPostExecute(Long aLong) {
-            double rate = Math.random();
-            heartRateTV.setText(heartrate + " bpm");
+            heartRateTV.setText(heartrate.getHeartRate() + " BPM");
 
         }
 
-        private double genRandom(double min, double max) {
+        private int genRandomHeartRate() {
             Random r = new Random();
-            return (r.nextInt((int)((max-min)*10+1))+min*10) / 10.0;
+            return r.nextInt((220 - 40) + 1) + 40;
         }
     }
 }

@@ -5,15 +5,19 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.sinduran.heartrate.HeartRateDatabaseAdapter;
 import com.sinduran.heartrate.R;
 
 public class HistoryActivity extends ListActivity {
 
+    HeartRateDatabaseAdapter heartRateDatabaseAdapter;
+    private String[] HR_DATA;
 
-    static final String[] HR_DATA = new String[] { "97 bpm - 10/10/15", "80 bpm - 10/10/15", "65 bpm - 9/10/15", "87 bpm - 4/10/15", "91 bpm - 1/10/15" };
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        heartRateDatabaseAdapter = new HeartRateDatabaseAdapter(this);
+        HR_DATA = heartRateDatabaseAdapter.getAllData();
         setListAdapter(new ArrayAdapter<String>(this, R.layout.history_list_item, HR_DATA));
         ListView listView = getListView();
         listView.setTextFilterEnabled(true);
