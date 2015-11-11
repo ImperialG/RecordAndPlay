@@ -1,47 +1,30 @@
 package com.sinduran.heartrate;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.widget.Toolbar;
 
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "DEBUG";
-    private final int source = MediaRecorder.AudioSource.MIC;
-    private File appDir;
-    private final String audioFilePath = "myaudio.wav";
-    private AndroidRecordPlay arp;
-    private ToggleButton playButton;
-    private ToggleButton recordButton;
-    private Chronometer myChronometer;
-
+/**
+ * Created by vishaal on 11/11/15.
+ */
+public class ProfileActivity extends Activity {
     private EditText nameTextField;
     private EditText dobTextField;
     private RadioButton maleButton;
@@ -57,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         if (repeat){
-
             displayProfileDetails();
         } else{
             nameTextField = (EditText) findViewById(R.id.nameTextBox);
@@ -69,37 +50,6 @@ public class MainActivity extends AppCompatActivity {
             genderButtons = (RadioGroup) findViewById(R.id.radioGroup);
             saveChangesButton = (Button) findViewById(R.id.saveButton);
         }
-//        String appPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/ARP/";
-//        appDir = new File(appPath);
-//        if(!appDir.exists()){
-//            appDir.mkdirs();
-//        }
-//        recordButton = (ToggleButton) findViewById(R.id.recordButton);
-//        playButton = (ToggleButton) findViewById(R.id.playButton);
-//        myChronometer = (Chronometer)findViewById(R.id.chronometer);
-//
-//        if (!hasMicrophone())
-//        {
-//            playButton.setEnabled(false);
-//            recordButton.setEnabled(false);
-//        } else {
-//            playButton.setEnabled(false);
-//        }
-//
-//        arp = new Android_Record_Play(source,appPath,audioFilePath);
-//        arp.setOnPlayerCompletion(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                playButton.setChecked(false);
-//                stopPlaying();
-//                /*
-//                 * if audio finishes before user presses on stop
-//                 * then automatically release resources
-//                 */
-//            }
-//        });
-
-
     }
 
     private void displayProfileDetails() {
@@ -124,9 +74,6 @@ public class MainActivity extends AppCompatActivity {
         } else{
             setContentView(R.layout.profile_main_initial);
         }
-//        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -151,29 +98,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onRecordClick(View view){
-        ToggleButton toggleButton = (ToggleButton) view;
-        if (toggleButton.isChecked()) {
-            myChronometer.setBase(SystemClock.elapsedRealtime());
-            startRecording();
-            myChronometer.start();
-        } else {
-            stopRecording();
-        }
-    }
-
-    public void onPlayClick(View view){
-        ToggleButton toggleButton = (ToggleButton) view;
-        if (toggleButton.isChecked()) {
-            myChronometer.setBase(SystemClock.elapsedRealtime());
-            startPlaying();
-            myChronometer.start();
-        } else {
-            stopPlaying();
-        }
-    }
-
-    public  void onSaveChangesClick(View view){
+    public void onSaveChangesClick(View view){
         //used for checking all fields are filled
         boolean error = false;
         String name = nameTextField.getText().toString();
@@ -208,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
             }catch (ParseException e) {
                 if(dobTextField.requestFocus()) {
                     dobTextField.setError("Please enter a valid date of birth of form dd-MM-YYYY");
-                    Log.d("DEBUG","error:" + e.toString());
                 } else {
                     makeToast("Please enter a valid date of birth of form dd-MM-YYYY");
                 }
@@ -242,31 +166,4 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
     }
 
-    private void startPlaying() {
-        recordButton.setEnabled(false);
-        arp.startPlaying();
-    }
-
-    private void startRecording(){
-        playButton.setEnabled(false);
-        arp.startRecording();
-    }
-
-    private void stopPlaying() {
-        myChronometer.stop();
-        arp.stopPlaying();
-        recordButton.setEnabled(true);
-    }
-
-    private void stopRecording() {
-        myChronometer.stop();
-        arp.stopRecording();
-        playButton.setEnabled(true);
-    }
-
-    private boolean hasMicrophone() {
-        PackageManager pmanager = this.getPackageManager();
-        return pmanager.hasSystemFeature(
-                PackageManager.FEATURE_MICROPHONE);
-    }
 }
