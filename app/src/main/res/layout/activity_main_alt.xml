@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="192dp"
+            android:layout_gravity="center">
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="214dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal|top"
+            android:src="@drawable/logo"/>
+
+        <ImageButton
+            android:layout_width="176dp"
+            android:layout_height="172dp"
+            android:text="View History"
+            android:id="@+id/viewHistoryBtn"
+            android:layout_gravity="right|bottom"
+            android:onClick="goToHistory"
+            android:src="@drawable/ic_history_black_48dp"/>
+
+        <ImageButton
+            android:layout_width="176dp"
+            android:layout_height="172dp"
+            android:text="Start Recording"
+            android:id="@+id/startRecordBtn"
+            android:layout_gravity="left|bottom"
+            android:onClick="calculateHeartRate"
+            android:src="@drawable/ic_mic_black_48dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="152dp"
+            android:text="00 BPM"
+            android:id="@+id/heartRateTV"
+            android:layout_gravity="center"
+
+            android:textSize="58sp"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+    </FrameLayout>
+
+</LinearLayout>
