@@ -38,7 +38,7 @@ public class AndroidRecordPlay {
     public AndroidRecordPlay(int source, String parentDir, String wavFile){
         this.source = source;
         this.wavFile = wavFile;
-        this.parentDir = parentDir;
+        AndroidRecordPlay.parentDir = parentDir;
     }
 
     private AudioRecord getAudioRecord(){
@@ -137,7 +137,7 @@ public class AndroidRecordPlay {
         long totalAudioLen = 0;
         long totalDataLen;
         long longSampleRate = sample_rate;
-        int channels = this.channels/ 16; // 1 for mono, 2 for stereo
+        int channels = AndroidRecordPlay.channels / 16; // 1 for mono, 2 for stereo
         long byteRate = recorder_bpp * sample_rate * channels/8;
         long blockAlign = channels *recorder_bpp/8;
 

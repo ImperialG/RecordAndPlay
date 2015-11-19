@@ -30,6 +30,11 @@ public class HeartRateMainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void goToProfile(View view){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
     public void calculateHeartRate(View view) {
         //Need async task
         new UpdateHRTask().execute();

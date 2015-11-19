@@ -25,6 +25,8 @@
         </activity>
         <activity android:name="com.sinduran.androidrecord.HistoryActivity" >
         </activity>
+        <activity android:name="com.sinduran.heartrate.ProfileActivity" >
+        </activity>
     </application>
 
 </manifest>

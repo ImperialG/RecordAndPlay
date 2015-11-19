@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,17 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+        repeat = false;
+        //check for existing profile
+        SharedPreferences profile = getSharedPreferences("Profile",0);
+        repeat = !(profile.getString("Name","NOT FOUND")).equalsIgnoreCase("NOT FOUND");
+        if(repeat){
+            Log.d("DEBUG", "entering repeated section, REPEAT BOOLEAN IS "  + repeat + " name is " + profile.getString("Name",""));
+            setContentView(R.layout.profile_main_repeat);
+        } else{
+            Log.d("DEBUG", "entering initial section");
+            setContentView(R.layout.profile_main_initial);
+        }
         if (repeat){
             displayProfileDetails();
         } else{
@@ -53,6 +65,7 @@ public class ProfileActivity extends Activity {
         nameDisplayField = (TextView) findViewById(R.id.nameDisplay);
         dobDisplayField = (TextView) findViewById(R.id.dobDisplay);
         genderDisplayField = (TextView) findViewById(R.id.genderDisplay);
+        Log.d("DEBUG", "DISPLAYING PROFILE DETAILS");
 
         SharedPreferences profile = getSharedPreferences("Profile",0);
         nameDisplayField.setText(profile.getString("Name","Profile not found"));
@@ -63,14 +76,7 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //check for existing profile
-        SharedPreferences profile = getSharedPreferences("Profile",0);
-        repeat = (profile.getString("Name","")).isEmpty();
-        if(repeat){
-            setContentView(R.layout.profile_main_repeat);
-        } else{
-            setContentView(R.layout.profile_main_initial);
-        }
+
     }
 
     @Override
@@ -134,7 +140,7 @@ public class ProfileActivity extends Activity {
                     makeToast("Please enter a valid date of birth of form dd-MM-YYYY");
                 }
                 error = true;
-            };
+            }
         }
         if(error){
             //wait for user to fill all fields
